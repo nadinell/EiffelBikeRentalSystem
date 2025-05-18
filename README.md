@@ -34,18 +34,31 @@ The application uses **MySQL** to store and manage data such as:
 
 EiffelBikeRental/
 ├── WebContent/
+
 │   ├── index.html
+
 │   ├── rent.html
+
 │   ├── buy.html
+
 │   └── assets/ (CSS, images, JS)
+
 ├── java/
+
 │   ├── models/         # Domain classes (Bike, User, Order, etc.)
+
 │   ├── services/       # Business logic
+
 │   ├── controllers/    # REST API endpoints
+
 │   └── utils/          # Helper classes (e.g., DB connection, currency conversion)
+
 ├── WEB-INF/
+
 │   └── web.xml         # Web application deployment descriptor
+
 └── README.md
+
 🔌 Example API Endpoints
 GET /api/bikes — Returns list of available bikes
 
