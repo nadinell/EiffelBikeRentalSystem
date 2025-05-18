@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        /* Optional: Style for the error message */
+        #error-message {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Register</h1>
+    <form onsubmit="registerUser(event)">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" required />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required />
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required />
+        </div>
+        <div>
+            <label for="userType">User Type:</label>
+            <select id="userType" required>
+                <option value="STUDENT">Student</option>
+                <option value="EMPLOYEE">Employee</option>
+            </select>
+        </div>
+        <div id="error-message"></div> <!-- Error message will appear here -->
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        // Client-side password validation
+        function validatePassword(password) {
+            return password.length >= 8; // Password must be at least 8 characters long
+        }
+
+        async function registerUser(event) {
+            event.preventDefault();  // Prevent form from submitting normally
+
+            // Get user input
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const errorDiv = document.getElementById("error-message");
+            errorDiv.textContent = ""; // Clear previous error messages
+
+            // Check password strength
+            if (!validatePassword(password)) {
+                errorDiv.textContent = "WARNING: Weak password. Password must be at least 8 characters long.";
+                errorDiv.style.color = "red";
+                return;  // Stop the form submission
+            }
+
+            const userData = {
+                username: document.getElementById("username").value,
+                email: email,
+                password: password,
+                userType: document.getElementById("userType").value
+            };
+
+            try {
+                // Send the data to the backend
+                const response = await fetch('/EiffelBikeRentalSystem/api/users/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                const result = await response.json();
+
+                // Handle errors returned from the backend
+                if (!response.ok) {
+                    throw new Error(result.message || 'Registration failed');
+                }
+
+                // If registration is successful
+                alert('User registered successfully!');
+            } catch (error) {
+                // Display error message
+                errorDiv.textContent = error.message;
+                errorDiv.style.color = "red"; // Set error message color to red
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Details</title>
+    <style>
+        /* Add your custom styles here */
+        .bike-details {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        .bike-image {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bike-details">
+        <h1>Bike Details</h1>
+        <div id="bike-info">
+            <!-- Bike details will be injected here -->
+        </div>
+        <button onclick="window.history.back();">Go Back</button>
+    </div>
+
+    <script>
+        // Get the bike ID from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const bikeId = urlParams.get('id');
+
+        // Fetch the bike details from the API
+        fetch(`http://localhost:8080/EiffelBikeRentalSystem/api/bikerental/bikes/${bikeId}`)
+            .then(response => response.json())
+            .then(bike => {
+                const bikeInfoDiv = document.getElementById('bike-info');
+                bikeInfoDiv.innerHTML = `
+                    <h2>${bike.name} (${bike.model})</h2>
+                    <img src="${bike.image}" alt="${bike.name}" class="bike-image" />
+                    <p><strong>Description:</strong> ${bike.description}</p>
+                    <p><strong>Owner:</strong> ${bike.owner}</p>
+                    <p><strong>Price:</strong> ${bike.price} €</p>
+                    <p><strong>Availability:</strong> ${bike.available ? 'Available' : 'Rented'}</p>
+                `;
+            })
+            .catch(error => {
+                console.error('Error fetching bike details:', error);
+            });
+    </script>
+
+</body>
+</html>

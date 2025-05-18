@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bike Rental - Payment</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://js.stripe.com/v3/"></script> <!-- Stripe.js -->
+</head>
+<body style="background-color: #ADD8E6; height: 100vh; display: flex; justify-content: center; align-items: center;">
+  
+  <!-- Payment Details Modal (Displayed Directly) -->
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body" style="background-color: #fff; border-color: #fff; padding: 30px;">
+
+        <!-- Close Icon (Optional) -->
+        <div class="text-right">
+          <i class="fa fa-close close" style="color: #000; cursor: pointer;"></i>
+        </div>
+
+        <!-- Rental Summary -->
+        <h3 class="text-uppercase">Bike Rental Confirmation</h3>
+        <h4 class="mt-5 theme-color mb-5">Confirm your order</h4>
+    <p>You're about to rent the bike for the following period:</p>
+        <div id="rentalDetails">
+         <!-- Bike Image Section -->
+    <div id="bikeImageContainer" style="text-align: center; margin: 20px 0;">
+      <img id="bikeImageUrl" alt="Selected Bike" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 8px;" />
+    </div>
+          <p><strong>Start Date and Time:</strong> <span id="startDateDisplay"></span></p>
+          <p><strong>End Date and Time:</strong> <span id="endDateDisplay"></span></p>
+          <p><strong>Rental Duration (in hours):</strong> <span id="durationDisplay"></span> hours</p>
+                    
+          <p><strong>Total Cost:</strong> €<span id="costDisplay"></span></p>
+        </div>
+
+
+        <br>
+
+        <!-- Stripe Payment Button -->
+        <div class="text-center mt-5">
+          <button class="btn btn-success" id="confirmPayment">Proceed to Payment</button>
+        </div>
+
+        <div id="paymentMessage" class="mt-3"></div>
+        
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Retrieve rental details from the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const bikeId = urlParams.get('bikeId');
+    const startDate = urlParams.get('startDate'); // format: yyyy-MM-dd'T'HH:mm
+    const endDate = urlParams.get('endDate'); // format: yyyy-MM-dd'T'HH:mm
+    const rentalDuration = parseFloat(urlParams.get('rentalDuration'));
+    const rentalCost = parseFloat(urlParams.get('rentalCost'));
+    const bikeImageUrl = urlParams.get('bikeImageUrl');
+
+    // Dynamically retrieve user ID (for example, from local storage or session)
+    const userId = localStorage.getItem("userId");
+
+    // Display rental details on the page
+    document.getElementById("startDateDisplay").textContent = startDate;
+    document.getElementById("endDateDisplay").textContent = endDate;
+    document.getElementById("durationDisplay").textContent = rentalDuration.toFixed(2);
+    document.getElementById("costDisplay").textContent = rentalCost.toFixed(2);
+    
+
+    // Stripe Configuration
+    const stripe = Stripe("pk_test_51QPEMdKFFZTSfyrh9ZmPL8m2QBRJpTlBmtT1Q0BnctXqeYOOoF4EFPRjS1tdyXCYA8Y3rwbFMU1ESf7hJsRVhz2u00vnPnJUO7"); // public key
+
+    document.getElementById("confirmPayment").onclick = async function () {
+      try {
+        // Step 1: Save rental details to the database
+        const rentalResponse = await fetch('http://localhost:8080/EiffelBikeRentalSystem/api/rentals/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            bikeId: bikeId,
+            startDate: startDate,
+            endDate: endDate,
+            rentalCost: rentalCost,
+            userId: userId
+          })
+        });
+
+        const rentalData = await rentalResponse.json();
+        console.log("Rental save response:", rentalData);  // Log the response for debugging
+
+        if (rentalData.success) {
+          // Proceed to Stripe payment creation
+          const response = await fetch('http://localhost:8080/EiffelBikeRentalSystem/api/stripe/create-checkout-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              bikeId: bikeId,
+              rentalCost: rentalCost
+            })
+          });
+
+          const session = await response.json();
+          console.log("Stripe session response:", session);  // Log the Stripe session response for debugging
+
+          if (session.id) {
+            // Redirect to Stripe Checkout
+            await stripe.redirectToCheckout({ sessionId: session.id });
+          } else {
+            document.getElementById("paymentMessage").textContent = "Payment initiation failed.";
+          }
+        } else {
+          document.getElementById("paymentMessage").textContent = "Error saving rental details.";
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        document.getElementById("paymentMessage").textContent = "Error processing payment.";
+      }
+    };
+  </script>
+
+  <style>
+    .theme-color {
+      color: #004cb9;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+    }
+
+    .modal-body {
+      padding: 30px;
+    }
+
+    .close {
+      color: #000;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+
+    .banner {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .banner-image {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .payment-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+
+    h1, h3 {
+      text-align: center;
+    }
+  </style>
+</body>
+</html>

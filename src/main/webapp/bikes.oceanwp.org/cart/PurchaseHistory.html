@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Styles as before */
+        .card {
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .card-header {
+            background-color: #004cb9;
+            color: white;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .theme-color {
+            color: #004cb9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3 class="text-center theme-color mb-4">Your Purchase History</h3>
+        <div class="row" id="purchaseCardsContainer">
+            <!-- Dynamic purchase cards will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+    // Function to fetch purchase history for a specific user
+    async function getPurchaseHistory(userId) {
+        const response = await fetch(`http://localhost:8080/EiffelBikeRentalSystem/api/purchase-history/${userId}`); 
+        const data = await response.json();
+
+        const container = document.getElementById('purchaseCardsContainer');
+        container.innerHTML = ''; // Clear any existing content
+
+        // Dynamically create purchase cards
+        data.forEach(purchase => {
+            const cardHTML = `
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="/EiffelBikeRentalSystem/bike-images/${purchase.image}" class="card-img-top" alt="${purchase.bikeName}">
+
+                        <div class="card-header">
+                            <h5>${purchase.bikeName} - ${purchase.bikeModel}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Date of Purchase:</strong> ${formatDate(purchase.createdAt)}</p>
+                            <p><strong>Price:</strong> ${purchase.amount} ${purchase.currency}</p>
+                            <p><strong>Status:</strong> ${purchase.status}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += cardHTML;
+        });
+    }
+
+    // Call the function to get purchase history
+    window.onload = function() {
+        const userId = localStorage.getItem('userId'); // Retrieve userId from localStorage
+        
+        if (userId) {
+            getPurchaseHistory(userId);
+        } else {
+            alert("User not logged in or userId not found in localStorage.");
+        }
+    };
+</script>
+<script>
+    // Helper function to format dates in a human-friendly way
+    function formatDate(dateString) {
+        // Clean the input if it has unwanted characters like [UTC]
+        const cleanedDateString = dateString.replace(/\[UTC\]$/, ''); // Remove [UTC] if present
+        const date = new Date(cleanedDateString); // Convert to Date object
+        
+        // If the date is invalid, return a default message
+        if (isNaN(date)) {
+            return 'Invalid Date';
+        }
+
+        const options = { 
+            weekday: 'long', // Day of the week
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric', 
+            hour: 'numeric', 
+            minute: 'numeric', 
+            second: 'numeric', 
+            timeZoneName: 'short' // to display timezone abbreviation
+        };
+        return date.toLocaleString('en-US', options); // You can change the locale as needed
+    }
+</script>
+</body>
+</html>

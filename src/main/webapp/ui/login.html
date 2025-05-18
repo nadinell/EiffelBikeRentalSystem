@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eiffel Bike Rental - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .message {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        
+        <!-- WooCommerce Login Form -->
+        <form class="woocommerce-form woocommerce-form-login login" method="post">
+            
+            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                <label for="username">Username or email address&nbsp;<span class="required" aria-hidden="true">*</span><span class="screen-reader-text">Required</span></label>
+                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="" required aria-required="true" />
+            </p>
+            
+            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                <label for="password">Password&nbsp;<span class="required" aria-hidden="true">*</span><span class="screen-reader-text">Required</span></label>
+                <input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password" required aria-required="true" />
+            </p>
+
+            <p class="form-row">
+                <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+                    <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span>Remember me</span>
+                </label>
+                <input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="47ed358ec1" />
+                <input type="hidden" name="_wp_http_referer" value="/my-account/" />
+                <button type="submit" class="woocommerce-button button woocommerce-form-login__submit" name="login" value="Log in">Log in</button>
+            </p>
+            
+            <p class="woocommerce-LostPassword lost_password">
+                <a href="lost-password/index.html">Lost your password?</a>
+            </p>
+        </form>
+
+        <!-- Message div where login status will be displayed -->
+        <div class="message" id="message"></div>
+
+    </div>
+
+    <script>
+    // JavaScript for handling form submission and displaying messages
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const userData = {
+            username: username,
+            password: password
+        };
+
+        const messageDiv = document.getElementById("message");  // Reference the message div
+
+        fetch('http://localhost:8080/EiffelBikeRentalSystem/api/users/login', {  // API endpoint URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Success: Display login success message
+                messageDiv.classList.remove("error");
+                messageDiv.classList.add("success");
+                messageDiv.innerHTML = "Login successful!";  // Display success message
+
+                // Optionally, you can redirect to another page after successful login:
+                 window.location.href = "register.html";  // Example redirect
+
+            } else {
+                // Failure: Display invalid credentials message
+                messageDiv.classList.remove("success");
+                messageDiv.classList.add("error");
+                messageDiv.innerHTML = "Invalid credentials. Please try again.";
+            }
+        })
+        .catch(error => {
+            messageDiv.classList.remove("success");
+            messageDiv.classList.add("error");
+            messageDiv.innerHTML = "An error occurred. Please try again later.";
+        });
+    });
+
+    </script>
+
+</body>
+
+
+</html>

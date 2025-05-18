@@ -1,0 +1,48 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!-- JAX-RS Application (Jersey Configuration for REST API) -->
+    <servlet>
+        <servlet-name>JAX-RS Application</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>com.eiffelbikerental.api,com.gustavebikeservice.api</param-value> <!-- Include both packages -->
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JAX-RS Application</servlet-name>
+        <url-pattern>/api/*</url-pattern> <!-- REST API base path -->
+    </servlet-mapping>
+
+    <!-- Static Resource Handling -->
+    <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- Mapping for Static Files -->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/bikes.oceanwp.org/*</url-pattern> <!-- Serve files under /bikes.oceanwp.org -->
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/bike-images/*</url-pattern> <!-- Serve images from /bike-images -->
+    </servlet-mapping>
+
+    <!-- Welcome File Configuration -->
+    <welcome-file-list>
+        <welcome-file>EiffelBikeRentalSystem/bikes.oceanwp.org/index.html</welcome-file> <!-- Default file to serve -->
+    </welcome-file-list>
+
+</web-app>

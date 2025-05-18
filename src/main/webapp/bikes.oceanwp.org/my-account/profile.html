@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title> BikeBliss | profile account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    	body{margin-top:20px;
+background:#eee;
+}
+
+.profile-widget {
+  position: relative;
+}
+.profile-widget .image-container {
+  background-size: cover;
+  background-position: center;
+  padding: 190px 0 10px;
+}
+.profile-widget .image-container .profile-background {
+  width: 100%;
+  height: auto;
+}
+.profile-widget .image-container .avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto -60px;
+  display: block;
+}
+.profile-widget .details {
+  padding: 50px 15px 15px;
+  text-align: center;
+}
+
+/* Component: Mini Profile Widget */
+.mini-profile-widget .image-container .avatar {
+  width: 180px;
+  height: 180px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: white;
+  padding: 4px;
+  border: 1px solid #dddddd;
+}
+.mini-profile-widget .details {
+  text-align: center;
+}
+
+/* Component: Panel */
+.panel {
+  border-radius: 0;
+  margin-bottom: 30px;
+}
+.panel.solid-color {
+  color: white;
+}
+.panel .panel-heading {
+  border-radius: 0;
+  position: relative;
+}
+.panel .panel-heading > .controls {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+.panel .panel-heading > .controls .nav.nav-pills {
+  margin: -8px 0 0 0;
+}
+.panel .panel-heading > .controls .nav.nav-pills li a {
+  padding: 5px 8px;
+}
+.panel .panel-heading .clickable {
+  margin-top: 0px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.panel .panel-heading.no-heading-border {
+  border-bottom-color: transparent;
+}
+.panel .panel-heading .left {
+  float: left;
+}
+.panel .panel-heading .right {
+  float: right;
+}
+.panel .panel-title {
+  font-size: 16px;
+  line-height: 20px;
+}
+.panel .panel-title.panel-title-sm {
+  font-size: 18px;
+  line-height: 28px;
+}
+.panel .panel-title.panel-title-lg {
+  font-size: 24px;
+  line-height: 34px;
+}
+.panel .panel-body {
+  font-size: 13px;
+}
+.panel .panel-body > .body-section {
+  margin: 0px 0px 20px;
+}
+.panel .panel-body > .body-section > .section-heading {
+  margin: 0px 0px 5px;
+  font-weight: bold;
+}
+.panel .panel-body > .body-section > .section-content {
+  margin: 0px 0px 10px;
+}
+.panel-white {
+  border: 1px solid #dddddd;
+}
+.panel-white > .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-white > .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-primary {
+  border: 1px solid #dddddd;
+}
+.panel-purple {
+  border: 1px solid #dddddd;
+}
+.panel-purple > .panel-heading {
+  color: #fff;
+  background-color: #8e44ad;
+  border: none;
+}
+.panel-purple > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-light-purple {
+  border: 1px solid #dddddd;
+}
+.panel-light-purple > .panel-heading {
+  color: #fff;
+  background-color: #9b59b6;
+  border: none;
+}
+.panel-light-purple > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-blue,
+.panel-info {
+  border: 1px solid #dddddd;
+}
+.panel-blue > .panel-heading,
+.panel-info > .panel-heading {
+  color: #fff;
+  background-color: #2980b9;
+  border: none;
+}
+.panel-blue > .panel-heading .panel-title a:hover,
+.panel-info > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-light-blue {
+  border: 1px solid #dddddd;
+}
+.panel-light-blue > .panel-heading {
+  color: #fff;
+  background-color: #3498db;
+  border: none;
+}
+.panel-light-blue > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-green,
+.panel-success {
+  border: 1px solid #dddddd;
+}
+.panel-green > .panel-heading,
+.panel-success > .panel-heading {
+  color: #fff;
+  background-color: #27ae60;
+  border: none;
+}
+.panel-green > .panel-heading .panel-title a:hover,
+.panel-success > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-light-green {
+  border: 1px solid #dddddd;
+}
+.panel-light-green > .panel-heading {
+  color: #fff;
+  background-color: #2ecc71;
+  border: none;
+}
+.panel-light-green > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-orange,
+.panel-warning {
+  border: 1px solid #dddddd;
+}
+.panel-orange > .panel-heading,
+.panel-warning > .panel-heading {
+  color: #fff;
+  background-color: #e82c0c;
+  border: none;
+}
+.panel-orange > .panel-heading .panel-title a:hover,
+.panel-warning > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-light-orange {
+  border: 1px solid #dddddd;
+}
+.panel-light-orange > .panel-heading {
+  color: #fff;
+  background-color: #ff530d;
+  border: none;
+}
+.panel-light-orange > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-red,
+.panel-danger {
+  border: 1px solid #dddddd;
+}
+.panel-red > .panel-heading,
+.panel-danger > .panel-heading {
+  color: #fff;
+  background-color: #d40d12;
+  border: none;
+}
+.panel-red > .panel-heading .panel-title a:hover,
+.panel-danger > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-light-red {
+  border: 1px solid #dddddd;
+}
+.panel-light-red > .panel-heading {
+  color: #fff;
+  background-color: #ff1d23;
+  border: none;
+}
+.panel-light-red > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-pink {
+  border: 1px solid #dddddd;
+}
+.panel-pink > .panel-heading {
+  color: #fff;
+  background-color: #fe31ab;
+  border: none;
+}
+.panel-pink > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-light-pink {
+  border: 1px solid #dddddd;
+}
+.panel-light-pink > .panel-heading {
+  color: #fff;
+  background-color: #fd32c0;
+  border: none;
+}
+.panel-light-pink > .panel-heading .panel-title a:hover {
+  color: #f0f0f0;
+}
+.panel-group .panel {
+  border-radius: 0;
+}
+.panel-group .panel + .panel {
+  margin-top: 0;
+  border-top: 0;
+}
+
+.bg-blue,
+.bg-info {
+  background-color: #2980b9 !important;
+}
+.bg-light-blue {
+  background-color: #3498db !important;
+}
+.bg-red,
+.bg-danger {
+  background-color: #d40d12 !important;
+}
+.bg-light-red {
+  background-color: #ff1d23 !important;
+}
+.bg-purple {
+  background-color: #8e44ad !important;
+}
+.bg-light-purple {
+  background-color: #9b59b6 !important;
+}
+.bg-green,
+bg-success {
+  background-color: #27ae60 !important;
+}
+.bg-light-green {
+  background-color: #2ecc71 !important;
+}
+.bg-orange,
+.bg-warning {
+  background-color: #e82c0c !important;
+}
+.bg-light-orange {
+  background-color: #ff530d !important;
+}
+.bg-pink {
+  background-color: #fe31ab !important;
+}
+.bg-light-pink {
+  background-color: #fd32c0 !important;
+}
+.color-white {
+  color: white !important;
+}
+.color-green,
+.text-success {
+  color: #27ae60 !important;
+}
+.color-light-green {
+  color: #2ecc71 !important;
+}
+.color-blue,
+.text-info {
+  color: #2980b9 !important;
+}
+.color-light-blue {
+  color: #3498db !important;
+}
+.color-orange,
+.text-warning {
+  color: #e82c0c !important;
+}
+.color-light-orange {
+  color: #ff530d !important;
+}
+.color-red,
+.text-danger {
+  color: #d40d12 !important;
+}
+.color-light-red {
+  color: #ff1d23 !important;
+}
+.color-purple {
+  color: #8e44ad !important;
+}
+.color-light-purple {
+  color: #9b59b6 !important;
+}
+.color-pink {
+  color: #fe31ab !important;
+}
+.color-light-pink {
+  color: #fd32c0 !important;
+}
+.border-green {
+  border: 4px solid #27ae60 !important;
+}
+.border-light-green {
+  border: 4px solid #2ecc71 !important;
+}
+.border-blue {
+  border: 4px solid #2980b9 !important;
+}
+.border-light-blue {
+  border: 4px solid #3498db !important;
+}
+.border-orange {
+  border: 4px solid #e82c0c !important;
+}
+.border-light-orange {
+  border: 4px solid #ff530d !important;
+}
+.border-red {
+  border: 4px solid #d40d12 !important;
+}
+.border-light-red {
+  border: 4px solid #ff1d23 !important;
+}
+.border-purple {
+  border: 4px solid #8e44ad !important;
+}
+.border-light-purple {
+  border: 4px solid #9b59b6 !important;
+}
+.border-pink {
+  border: 4px solid #fe31ab !important;
+}
+.border-light-pink {
+  border: 4px solid #fd32c0 !important;
+}
+.border-top-green {
+  border-top: 4px solid #27ae60 !important;
+}
+.border-top-light-green {
+  border-top: 4px solid #2ecc71 !important;
+}
+.border-top-blue {
+  border-top: 4px solid #2980b9 !important;
+}
+.border-top-light-blue {
+  border-top: 4px solid #3498db !important;
+}
+.border-top-orange {
+  border-top: 4px solid #e82c0c !important;
+}
+.border-top-light-orange {
+  border-top: 4px solid #ff530d !important;
+}
+.border-top-red {
+  border-top: 4px solid #d40d12 !important;
+}
+.border-top-light-red {
+  border-top: 4px solid #ff1d23 !important;
+}
+.border-top-purple {
+  border-top: 4px solid #8e44ad !important;
+}
+.border-top-light-purple {
+  border-top: 4px solid #9b59b6 !important;
+}
+.border-top-pink {
+  border-top: 4px solid #fe31ab !important;
+}
+.border-top-light-pink {
+  border-top: 4px solid #fd32c0 !important;
+}
+.border-right-green {
+  border-right: 4px solid #27ae60 !important;
+}
+.border-right-light-green {
+  border-right: 4px solid #2ecc71 !important;
+}
+.border-right-blue {
+  border-right: 4px solid #2980b9 !important;
+}
+.border-right-light-blue {
+  border-right: 4px solid #3498db !important;
+}
+.border-right-orange {
+  border-right: 4px solid #e82c0c !important;
+}
+.border-right-light-orange {
+  border-right: 4px solid #ff530d !important;
+}
+.border-right-red {
+  border-right: 4px solid #d40d12 !important;
+}
+.border-right-light-red {
+  border-right: 4px solid #ff1d23 !important;
+}
+.border-right-purple {
+  border-right: 4px solid #8e44ad !important;
+}
+.border-right-light-purple {
+  border-right: 4px solid #9b59b6 !important;
+}
+.border-right-pink {
+  border-right: 4px solid #fe31ab !important;
+}
+.border-right-light-pink {
+  border-right: 4px solid #fd32c0 !important;
+}
+.border-bottom-green {
+  border-bottom: 4px solid #27ae60 !important;
+}
+.border-bottom-light-green {
+  border-bottom: 4px solid #2ecc71 !important;
+}
+.border-bottom-blue {
+  border-bottom: 4px solid #2980b9 !important;
+}
+.border-bottom-light-blue {
+  border-bottom: 4px solid #3498db !important;
+}
+.border-bottom-orange {
+  border-bottom: 4px solid #e82c0c !important;
+}
+.border-bottom-light-orange {
+  border-bottom: 4px solid #ff530d !important;
+}
+.border-bottom-red {
+  border-bottom: 4px solid #d40d12 !important;
+}
+.border-bottom-light-red {
+  border-bottom: 4px solid #ff1d23 !important;
+}
+.border-bottom-purple {
+  border-bottom: 4px solid #8e44ad !important;
+}
+.border-bottom-light-purple {
+  border-bottom: 4px solid #9b59b6 !important;
+}
+.border-bottom-pink {
+  border-bottom: 4px solid #fe31ab !important;
+}
+.border-bottom-light-pink {
+  border-bottom: 4px solid #fd32c0 !important;
+}
+.border-left-green {
+  border-left: 4px solid #27ae60 !important;
+}
+.border-left-light-green {
+  border-left: 4px solid #2ecc71 !important;
+}
+.border-left-blue {
+  border-left: 4px solid #2980b9 !important;
+}
+.border-left-light-blue {
+  border-left: 4px solid #3498db !important;
+}
+.border-left-orange {
+  border-left: 4px solid #e82c0c !important;
+}
+.border-left-light-orange {
+  border-left: 4px solid #ff530d !important;
+}
+.border-left-red {
+  border-left: 4px solid #d40d12 !important;
+}
+.border-left-light-red {
+  border-left: 4px solid #ff1d23 !important;
+}
+.border-left-purple {
+  border-left: 4px solid #8e44ad !important;
+}
+.border-left-light-purple {
+  border-left: 4px solid #9b59b6 !important;
+}
+.border-left-pink {
+  border-left: 4px solid #fe31ab !important;
+}
+.border-left-light-pink {
+  border-left: 4px solid #fd32c0 !important;
+}
+.bg2 {
+  background-image: url('http://www.bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg');
+}
+
+
+
+
+.btn-blue {
+  background-color: #3498db;
+  border-color: #3498db;
+  color: white;
+}
+.btn-blue:hover,
+.btn-blue:visited {
+  background-color: #2980b9;
+  color: white;
+}
+.btn-green {
+  background-color: #2ecc71;
+  border-color: #27ae60;
+  color: white;
+}
+.btn-green:hover,
+.btn-green:visited {
+  background-color: #27ae60;
+  color: white;
+}
+.btn-orange {
+  background-color: #ff530d;
+  border-color: #e82c0c;
+  color: white;
+}
+.btn-orange:hover,
+.btn-orange:visited {
+  background-color: #e82c0c;
+  color: white;
+}
+.btn-red {
+  background-color: #ff1d23;
+  border-color: #d40d12;
+  color: white;
+}
+.btn-red:hover,
+.btn-red:visited {
+  background-color: #d40d12;
+  color: white;
+}
+.btn-purple {
+  background-color: #9b59b6;
+  border-color: #8e44ad;
+  color: white;
+}
+.btn-purple:hover,
+.btn-purple:visited {
+  background-color: #8e44ad;
+  color: white;
+}
+.btn-pink {
+  background-color: #fd32c0;
+  border-color: #fe31ab;
+  color: white;
+}
+.btn-pink:hover,
+.btn-pink:visited {
+  background-color: #fe31ab;
+  color: white;
+}
+
+.progress.progress-xs {
+    height: 12px;
+}
+
+    </style>
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-white profile-widget">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="image-container bg2">  
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="avatar" alt="avatar"> 
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="details">
+    <h4><strong id="username"></strong></h4>
+   <style>
+        #userRole {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+    <div id="userRole"></div>
+     <script>
+        // Retrieve userType from localStorage
+        const userType = localStorage.getItem("userType");
+
+        // Reference the placeholder div
+        const userRoleDiv = document.getElementById("userRole");
+
+        // Update the content based on the userType
+        if (userType === "EMPLOYEE") {
+            userRoleDiv.innerHTML = "<div>Works at Gustave Eiffel University</div>";
+        } else if (userType === "STUDENT") {
+            userRoleDiv.innerHTML = "<div>Student at Gustave Eiffel University</div>";
+        } else {
+            // Fallback for undefined or missing userType
+            userRoleDiv.innerHTML = "<div>Role not defined</div>";
+        }
+    </script>                        <br>
+                          <div class="mg-top-10">
+            <div class="button-container">
+                <!-- Upload Button -->
+                <button class="btn btn-blue" onclick="triggerFileInput()">
+                    <i class="fa fa-upload"></i>
+                </button>
+
+                <!-- Trash Button -->
+                <button class="btn btn-red" onclick="deleteAvatar()">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+
+            <form id="uploadForm" action="/api/upload/avatar" method="post" enctype="multipart/form-data" style="display: inline;">
+                <label for="fileInput" class="d-inline-block bg-primary link-light lh-1 p-2 rounded" style="cursor: pointer;">
+                    <i class="bi bi-upload"></i>
+                </label>
+                <input type="file" id="fileInput" name="file" style="display: none;" onchange="submitForm()" accept="image/*">
+            </form>
+        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="row">
+            
+            <div class="col-sm-6">
+                
+<div class="panel panel-white border-top-purple">
+    <div class="panel-heading">
+        <h3 class="panel-title">Password</h3>
+        <div class="controls pull-right">
+            <span class="pull-right clickable">
+                <i class="fa fa-chevron-up"></i>
+            </span>
+        </div>
+    </div>
+
+<div class="panel-body">
+    <form id="changePasswordForm">
+        <!-- Current Password -->
+        <div class="body-section">
+            <h5 class="section-heading">Current Password</h5>
+            <input 
+                type="password" 
+                id="currentPassword" 
+                name="current_password" 
+                class="form-control" 
+                placeholder="Enter your current password" 
+                required 
+            />
+        </div>
+
+        <!-- New Password -->
+        <div class="body-section">
+            <h5 class="section-heading">New Password</h5>
+            <input 
+                type="password" 
+                id="newPassword" 
+                name="new_password" 
+                class="form-control" 
+                placeholder="Enter a new password" 
+                required 
+            />
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="body-section">
+            <h5 class="section-heading">Confirm Password</h5>
+            <input 
+                type="password" 
+                id="confirmPassword" 
+                name="confirm_password" 
+                class="form-control" 
+                placeholder="Confirm your new password" 
+                required 
+            />
+        </div> 
+        <br>
+
+        <!-- Submit Button -->
+        <div class="body-section">
+            <button type="submit" class="btn btn-purple btn-sm" id="submitButton">Change Password</button>
+        </div>
+    </form>
+</div>
+<!-- Message Display -->
+<div id="message"></div>
+</div>
+
+<script>
+    // Get the userId dynamically from somewhere (e.g., sessionStorage, hidden field, etc.)
+const userId = new URLSearchParams(window.location.search).get('userId');
+console.log(userId);
+    // Event listener for form submission
+    document.getElementById("changePasswordForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Gather form data
+        const currentPassword = document.getElementById("currentPassword").value;
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        // Validate if new password and confirm password match
+        if (newPassword !== confirmPassword) {
+            document.getElementById("message").textContent = "New password and confirm password do not match.";
+            document.getElementById("message").style.color = "red";
+            return;
+        }
+
+        // Create request object
+        const requestBody = {
+            currentPassword: currentPassword,
+            newPassword: newPassword,
+            confirmPassword: confirmPassword
+        };
+
+        // Make the PUT request using Fetch API
+        fetch(`http://localhost:8080/EiffelBikeRentalSystem/api/users/${userId}/password`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestBody)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Display success or error message based on response
+            if (data.message) {
+                document.getElementById("message").textContent = data.message;
+                document.getElementById("message").style.color = "green"; // success color
+            } else {
+                document.getElementById("message").textContent = "Failed to change password. Please check your inputs.";
+                document.getElementById("message").style.color = "red"; // error color
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById("message").textContent = "An error occurred. Please try again later.";
+            document.getElementById("message").style.color = "red"; // error color
+        });
+    });
+</script>
+
+                 
+                <div class="panel panel-white border-top-light-blue">
+                   <div class="panel-heading">
+                        <h3 class="panel-title">Add Bike For Rent</h3>
+                        <div class="controls pull-right">
+                            <span class="pull-right clickable">
+                                <i class="fa fa-chevron-up"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="panel-body"> 
+                        <div class="body-section">
+                            <h5 class="section-heading"></h5>
+                            <form id="addBikeForm" action="/bikes" method="POST" enctype="application/json">
+        <label for="name">Bike Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="model">Model:</label><br>
+        <input type="text" id="model" name="model" required><br><br>
+        
+        <label for="image">Image URL:</label><br>
+        <input type="text" id="image" name="image" required><br><br>
+        
+        <label for="price">Price (per day):</label><br>
+        <input type="number" id="price" name="price" required><br><br>
+        
+        <label for="isAvailable">Available:</label><br>
+        <input type="checkbox" id="isAvailable" name="isAvailable" checked><br><br>
+        
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" required></textarea><br><br>
+
+        
+        
+        <button type="submit" class="btn btn-info btn-sm" >Add Bike</button>                          
+        
+    </form>
+
+    <script>
+        document.getElementById("addBikeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const bikeData = {
+                name: document.getElementById("name").value,
+                model: document.getElementById("model").value,
+                image: document.getElementById("image").value,
+                price: parseFloat(document.getElementById("price").value),
+                isAvailable: document.getElementById("isAvailable").checked,
+                description: document.getElementById("description").value,
+            };
+
+            fetch("http://localhost:8080/EiffelBikeRentalSystem/api/bikerental/bikes", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(bikeData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Bike added successfully!");
+            })
+            alert("Bike added successfully!");
+        });
+    </script>
+                        </div>
+                        <div class="body-section">
+                        </div>
+                    </div>
+                </div>
+                 
+                
+                
+            </div>
+<div class="col-sm-6">
+    <div class="panel panel-white border-top-green">
+        <div class="panel-heading">
+            <h3 class="panel-title">User Info</h3>
+            <div class="controls pull-right">
+                <span class="pull-right clickable">
+                    <i class="fa fa-chevron-up"></i>
+                </span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="body-section">
+                <h5 class="section-heading">Name</h5>
+                <p id="user-name" class="section-content">Loading...</p>
+            </div>
+            <div class="body-section">
+                <label class="form-label">User Type</label>
+                <p id="user-type" class="section-content">Loading...</p>
+            </div>
+            <div class="body-section">
+                <h5 class="section-heading">Telephone</h5>
+                <p id="user-phone" class="section-content">Loading...</p>
+            </div>
+            <div class="body-section">
+                <h5 class="section-heading">Email</h5>
+                <p id="user-email" class="section-content">Loading...</p>
+            </div>
+            <div class="body-section">
+                <h5 class="section-heading">Address</h5>
+                <p id="user-address" class="section-content">Not Available</p>
+            </div>
+            <div class="body-section">
+                <h5 class="section-heading">Country</h5>
+                <p id="user-country" class="section-content">Not Available</p>
+            </div>
+           <div class="body-section">
+</div>
+
+<!-- Edit User Modal -->
+<div class="profile-container">
+    <!-- Edit Button -->
+    <a href="#" class="btn btn-green btn-sm" id="editButton">Edit</a>
+
+    <!-- Popup Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeButton">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="editForm">
+                <label for="username">Username:</label>
+                <input id="username" name="username" type="text" />
+                <br>
+                <label for="email">Email:</label>
+                <input id="email" name="email" type="email" />
+                <br>
+                <label for="password">Password:</label>
+                <input id="password" name="password" type="password" />
+                <br>
+                <label for="userType">User Type:</label>
+                
+                <input id="userType" name="userType" type="text" />
+                <br>
+                <label for="phone">Phone:</label>
+                <input id="phone" name="phone" type="text" />
+                <br>
+                <label for="address">Address:</label>
+                <input id="address" name="address" type="text" />
+                <br>
+                <label for="country">Country:</label>
+                <input id="country" name="country" type="text" />
+                <br>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Basic styling for the modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Get modal and related elements
+    const editButton = document.getElementById("editButton");
+    const editModal = document.getElementById("editModal");
+    const closeButton = document.getElementById("closeButton");
+
+    // Open modal when Edit button is clicked
+    editButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        editModal.style.display = "block";
+    });
+
+    // Close modal when 'X' button is clicked
+    closeButton.addEventListener("click", function () {
+        editModal.style.display = "none";
+    });
+
+    // Close modal when user clicks outside the modal content
+    window.addEventListener("click", function (event) {
+        if (event.target === editModal) {
+            editModal.style.display = "none";
+        }
+    });
+});
+</script>
+
+<script>// Wait for the DOM to load
+document.addEventListener('DOMContentLoaded', function () {
+
+    // Get modal elements
+    const editButton = document.getElementById('editButton');
+    const editModal = document.getElementById('editModal');
+    const closeButton = document.getElementById('closeButton');
+    const editForm = document.getElementById('editForm');
+
+    // Get user data (this can be fetched from your API or backend)
+const userId = new URLSearchParams(window.location.search).get('userId');
+console.log(userId);  // Check if userId is being fetched correctly
+    
+    // Fetch user data from the backend (simulated here)
+    fetch(`http://localhost:8080/EiffelBikeRentalSystem/api/users/${userId}`)
+        .then(response => response.json())
+        .then(data => {
+            // Populate form fields with user data
+            document.getElementById('username').value = data.username;
+            document.getElementById('email').value = data.email;
+            document.getElementById('password').value = '';  // Do not pre-fill password for security
+            document.getElementById('userType').value = data.userType;
+            document.getElementById('phone').value = data.phone;
+            document.getElementById('address').value = data.address || '';
+            document.getElementById('country').value = data.country || '';
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+
+    // Open the modal when Edit button is clicked
+    if (editButton) {
+        editButton.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent default link behavior
+            editModal.style.display = 'block';  // Show the modal
+        });
+    }
+
+    // Close the modal when the close button (x) is clicked
+    if (closeButton) {
+        closeButton.addEventListener('click', function () {
+            editModal.style.display = 'none';  // Hide the modal
+        });
+    }
+
+    // Close the modal if the user clicks outside of the modal content
+    window.addEventListener('click', function (e) {
+        if (e.target === editModal) {
+            editModal.style.display = 'none';
+        }
+    });
+
+    // Handle form submission for updating user information
+    if (editForm) {
+        editForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(editForm);
+            const userData = {};
+            formData.forEach((value, key) => {
+                userData[key] = value;
+            });
+
+            // Send update request to the backend API (PUT request)
+            fetch(`http://localhost:8080/EiffelBikeRentalSystem/api/users/${userId}/update`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);  // Display success or error message
+                editModal.style.display = 'none';  // Close the modal
+                location.reload();
+            })
+            .catch(error => {
+                alert('Failed to update user.');
+                console.error('Error:', error);
+            });
+        });
+    }
+
+});
+</script>
+
+<script>document.addEventListener("DOMContentLoaded", function () {
+    const userId = localStorage.getItem("userId");
+    
+    
+    const apiUrl = `http://localhost:8080/EiffelBikeRentalSystem/api/users/${userId}`; 
+
+    // Fetch user data
+    fetch(apiUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("User not found");
+            }
+            return response.json();
+        })
+        .then((user) => {
+            // Update HTML with user data
+            document.getElementById("user-name").textContent = user.username || "N/A";
+            document.getElementById("username").textContent = user.username || "N/A";
+            document.getElementById("user-type").textContent = user.userType || "N/A";
+            document.getElementById("user-phone").textContent = user.phone || "N/A";
+            document.getElementById("user-email").textContent = user.email || "N/A";
+            // Address and country are placeholders, update them if available
+            document.getElementById("user-address").textContent = user.address || "Not Available";
+            document.getElementById("user-country").textContent = user.country || "Not Available";
+        })
+        .catch((error) => {
+            console.error("Error fetching user data:", error);
+            alert("Failed to load user information.");
+        });
+});
+</script>
+                    </div>
+                </div>
+                   
+                      
+                      
+                      
+                      
+                <div class="panel panel-white border-top-orange">
+                   <div class="panel-heading">
+                        <h3 class="panel-title">Rent Statistics</h3>
+                        <div class="controls pull-right">
+                            <span class="pull-right clickable">
+                                <i class="fa fa-chevron-up"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="panel-body"> 
+                       <div class="body-section">
+    <h5 class="section-heading">Rentals</h5>
+    <p class="section-content" id="rentalsCount">Loading...</p>
+</div>
+<script>
+// Function to fetch and display rentals count
+function fetchRentalsCount(userId) {
+    // Fetching rentals count from the backend
+    fetch(`http://localhost:8080/EiffelBikeRentalSystem/api/users/${userId}/rentals`)
+        .then(response => response.json())
+        .then(data => {
+            // Display the rentals count
+            document.getElementById("rentalsCount").innerText = data.rentalsCount;
+        })
+        .catch(error => {
+            // If there's an error, display a fallback message
+            console.error("Error fetching rentals count:", error);
+            document.getElementById("rentalsCount").innerText = "Error fetching data";
+        });
+}
+
+fetchRentalsCount(userId);
+</script>
+
+                       <div class="body-section">
+    <h5 class="section-heading">Waiting List</h5>
+    <p class="section-content" id="waiting-list-count">0</p>  <!-- Default value 0 -->
+</div>
+<script>
+// Function to fetch and display rentals count
+function fetchwaitinglistCount(userId) {
+    // Fetching rentals count from the backend
+    fetch(`http://localhost:8080/EiffelBikeRentalSystem/api/users/${userId}/waitinglist`)
+        .then(response => response.json())
+        .then(data => {
+            // Display the rentals count
+            document.getElementById("waiting-list-count").innerText = data.waitinglistCount;
+        })
+        .catch(error => {
+            // If there's an error, display a fallback message
+            console.error("Error fetching waitinglist count:", error);
+            document.getElementById("waiting-list-count").innerText = "Error fetching data";
+        });
+}
+
+fetchwaitinglistCount(userId);
+</script>
+
+                        <div class="body-section">
+                            <h5 class="section-heading">Wishlist</h5>
+                            <p class="section-content">18</p>
+                        </div>  
+                    </div>
+                </div>
+                 
+                <div class="panel panel-white border-top-blue">
+                   <div class="panel-heading">
+                        <h3 class="panel-title">expenses Statistics</h3>
+                        <div class="controls pull-right">
+                            <span class="pull-right clickable">
+                                <i class="fa fa-chevron-up"></i>
+                            </span>
+                        </div>
+                    </div>
+                   <div class="panel-body">  
+     <div class="body-section"> 
+        <h5 class="section-heading">Today</h5>
+        <p class="section-content" id="todayExpense">€0.00</p>
+    </div>
+    <div class="body-section">
+        <h5 class="section-heading">Last Week</h5>
+        <p class="section-content" id="lastWeekExpense">€0.00</p>
+    </div>
+    <div class="body-section">
+        <h5 class="section-heading">This Quarter</h5>
+        <p class="section-content" id="quarterExpense">€0.00</p>
+    </div>  
+</div>
+<script>
+        // Function to fetch rental costs and update the UI
+        async function fetchRentalCosts() {
+            try {
+                // Fetch data from the API
+                const response = await fetch('http://localhost:8080/EiffelBikeRentalSystem/api/rentals/costs');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data from the server');
+                }
+
+                // Parse JSON response
+                const data = await response.json();
+
+                // Update the UI with fetched data
+                document.getElementById('todayExpense').textContent = `€${data.today_cost.toFixed(2)}`;
+                document.getElementById('lastWeekExpense').textContent = `€${data.last_week_cost.toFixed(2)}`;
+                document.getElementById('quarterExpense').textContent = `€${data.this_quarter_cost.toFixed(2)}`;
+            } catch (error) {
+                // Handle errors
+                console.error('Error fetching rental costs:', error);
+                alert('An error occurred while fetching rental costs. Please try again later.');
+            }
+        }
+
+        // Call the function to fetch and update rental costs on page load
+        document.addEventListener('DOMContentLoaded', fetchRentalCosts);
+    </script>
+
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+
+</div>
+</div>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Rental Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .bike-available {
+            color: green;
+            font-weight: bold;
+        }
+        .bike-unavailable {
+            color: red;
+            font-weight: bold;
+        }
+        .bike-image {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bike Rental Service</h1>
+    
+    <table id="bikeTable">
+        <thead>
+            <tr>
+                <th>Bike Name</th>
+                <th>Model</th>
+                <th>Price (per hour)</th>
+                <th>Availability</th>
+                <th>Owner</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Bike entries will be populated here dynamically -->
+        </tbody>
+    </table>
+
+<script>
+    // Fetch the list of bikes from the backend
+    fetch('http://localhost:8080/EiffelBikeRentalSystem/api/bikerental/all')
+        .then(response => response.json())
+        .then(bikes => {
+            const bikeTableBody = document.querySelector('#bikeTable tbody');
+            bikes.forEach(bike => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${bike.name}</td>
+                    <td>${bike.model}</td>
+                    <td>${bike.price} €</td>
+                    <td class="${bike.available === true ? 'bike-available' : 'bike-unavailable'}">
+                        ${bike.available === true ? 'Available' : 'Rented'}
+                    </td>
+                    <td>${bike.owner}</td>
+                    <td><img src="${bike.image}" alt="${bike.name}" class="bike-image" /></td>
+                `;
+                bikeTableBody.appendChild(row);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching bike data:', error);
+        });
+</script>
+
+
+</body>
+</html>
